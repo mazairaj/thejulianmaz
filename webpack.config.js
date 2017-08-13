@@ -1,9 +1,11 @@
+const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  entry: `${__dirname}/src/index.js`,
+  devtool: 'eval',
+  entry: './src/index.js',
   output: {
-    path: `${__dirname}/build`,
+    path: path.join(__dirname, 'build'),
     publicPath: '/build/',
     filename: 'bundle.js',
   },
@@ -12,6 +14,11 @@ module.exports = {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
     ],
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['react-hot', 'babel'],
+      include: path.join(__dirname, 'src'),
+    }],
   },
 
   plugins: process.argv.indexOf('-p') === -1 ? [] : [
@@ -19,6 +26,6 @@ module.exports = {
       output: {
         comments: false,
       },
-    }),
+    }), new webpack.HotModuleReplacementPlugin(),
   ],
 };
