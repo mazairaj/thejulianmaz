@@ -21,31 +21,24 @@ class HomePage extends Component {
   renderPage(selection) {
     switch (selection) {
       case ('about'): {
-        this.setState({ selected: 'about' });
         return <About />;
       }
       case ('videos'): {
-        this.setState({ selected: 'videos' });
         return <Videos />;
       }
       case ('projects'): {
-        this.setState({ selected: 'projects' });
         return <Projects />;
       }
       case ('articles'): {
-        this.setState({ selected: 'Articles' });
         return <Articles />;
       }
       case ('resume'): {
-        this.setState({ selected: 'resume' });
         return <Resume />;
       }
-      case ('contact'): {
-        this.setState({ selected: 'contact' });
-        return <Contact />;
-      }
+      // case ('contact'): {
+      //   return <Contact />;
+      // }
       default: {
-        this.setState({ selected: 'about' });
         return <About />;
       }
     }

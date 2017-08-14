@@ -30,7 +30,7 @@ class Side extends Component {
           <div style={{ backgroundColor: '#DCE8FF', borderBottom: '1px solid #061839', height: 100, flexDirection: 'row', display: 'flex' }}>
             <img
               alt=""
-              width="80" style={{ borderRadius: 40, margin: 10 }} src="https://scontent-sjc2-1.xx.fbcdn.net/v/t1.0-9/12439023_10206114395882164_3964247135252667796_n.jpg?oh=f3ca694d5c29666127ad5c348b3caca6&oe=5979CC62"
+              width="80" style={{ borderRadius: 40, margin: 10 }} src="https://scontent-mia3-2.xx.fbcdn.net/v/t1.0-9/12439023_10206114395882164_3964247135252667796_n.jpg?oh=5066dfc7c3d015f207479a0b54671ab9&oe=59F07362"
             />
             <h2 style={{ alignSelf: 'flex-end' }}>{introText}</h2>
           </div>
@@ -53,10 +53,6 @@ class Side extends Component {
           <Nav id="resume" href="https://drive.google.com/file/d/0B17WtuksYOC8S1JBZ1ZKLU1ETEk/view?usp=sharing">
             <NavIcon ><SvgIcon size={20} icon={paperclip} /></NavIcon>
             <NavText>My Resume</NavText>
-          </Nav>
-          <Nav id="contact">
-            <NavIcon><SvgIcon size={20} icon={paperPlane} /></NavIcon>
-            <NavText> Contace Me </NavText>
           </Nav>
         </SideNav>
       </div>
