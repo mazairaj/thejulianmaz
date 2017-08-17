@@ -46,10 +46,6 @@ class Side extends Component {
             <NavIcon><SvgIcon size={20} icon={cogs} /></NavIcon>
             <NavText> My Projects </NavText>
           </Nav>
-          <Nav id="articles">
-            <NavIcon><SvgIcon size={20} icon={pencil} /></NavIcon>
-            <NavText> Blog Posts </NavText>
-          </Nav>
           <Nav id="resume" href="https://drive.google.com/file/d/0B17WtuksYOC8S1JBZ1ZKLU1ETEk/view?usp=sharing">
             <NavIcon ><SvgIcon size={20} icon={paperclip} /></NavIcon>
             <NavText>My Resume</NavText>

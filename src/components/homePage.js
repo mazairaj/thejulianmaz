@@ -29,9 +29,9 @@ class HomePage extends Component {
       case ('projects'): {
         return <Projects />;
       }
-      case ('articles'): {
-        return <Articles />;
-      }
+      // case ('articles'): {
+      //   return <Articles />;
+      // }
       case ('resume'): {
         return <Resume />;
       }

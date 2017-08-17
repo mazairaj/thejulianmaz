@@ -3,7 +3,7 @@ import React from 'react';
 const Resume = function () {
   return (
     <div style={{ flex: 1, display: 'flex', justifyContent: 'center', marginTop: 100 }}>
-      <a href="https://drive.google.com/file/d/0B17WtuksYOC8S1JBZ1ZKLU1ETEk/view?usp=sharing">
+      <a href="https://drive.google.com/open?id=0B17WtuksYOC8MVcwLUMtVXgtX0E">
         <img
           alt="250x450"
           height="450"

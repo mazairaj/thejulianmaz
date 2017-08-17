@@ -15,6 +15,11 @@ class Projects extends Component {
       opacityRight: 'linear-gradient(to left, #DCE8FF, white)',
       imageOpacity: '1',
       show: false,
+      images: [
+        'https://github.com/mazairaj/oneFifty/raw/master/assets/image/ranking.png',
+        'https://lh3.google.com/u/0/d/0B17WtuksYOC8U20zOUhfXzJkSXM=w1184-h634-iv1',
+        'https://github.com/mazairaj/BetaVuew/raw/master/images/ActivitySearch.png',
+      ],
     };
     this.mouseEnterLeft = this.mouseEnterLeft.bind(this);
     this.mouseLeaveLeft = this.mouseLeaveLeft.bind(this);
@@ -22,6 +27,8 @@ class Projects extends Component {
     this.mouseLeaveRight = this.mouseLeaveRight.bind(this);
     this.mouseEnterImage = this.mouseEnterImage.bind(this);
     this.mouseLeaveImage = this.mouseLeaveImage.bind(this);
+    this.mouseClickLeft = this.mouseClickLeft.bind(this);
+    this.mouseClickRight = this.mouseClickRight.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.close = this.close.bind(this);
   }
@@ -49,49 +56,27 @@ class Projects extends Component {
   mouseLeaveImage() {
     this.setState({ imageOpacity: '1' });
   }
+  mouseClickLeft() {
+    if (this.state.index === 0) {
+      this.setState({ index: this.state.images.length - 1 });
+    } else {
+      this.setState({ index: this.state.index - 1 });
+    }
+  }
+  mouseClickRight() {
+    if (this.state.index === this.state.images.length - 1) {
+      this.setState({ index: 0 });
+    } else {
+      this.setState({ index: this.state.index + 1 });
+    }
+    console.log(this.state.index);
+  }
   close() {
     this.setState({ show: !this.state.show });
   }
-  modalSelectLeft() {
-    return true;
-  }
-  modalSelectRight() {
-
-  }
-
-  render() {
-    return (
-      <div style={{ height: '100%', display: 'flex', flexDirection: 'row', backgroundColor: 'white' }}>
-        <div style={{ backgroundImage: this.state.opacityLeft, width: '15%' }}>
-          <div
-            style={{ backgroundColor: 'transparent', width: '100%', height: '100%', display: 'flex' }}
-            onMouseEnter={this.mouseEnterLeft}
-            onMouseLeave={this.mouseLeaveLeft}
-          >
-            <SvgIcon style={{ justifyContent: 'center', margin: 'auto', color: '#d3d3d3' }} size={40} icon={arrowCircleLeft} />
-          </div>
-        </div>
-        <div
-          style={{ display: 'flex', flexDirection: 'column', width: '70%' }}
-        >
-          <div style={{ margin: 'auto' }}>
-              <img
-                style={{ opacity: this.state.imageOpacity, display: 'block', margin: 'auto' }} width={250} height={400} alt="250x400" src="https://github.com/mazairaj/oneFifty/raw/master/assets/image/ranking.png"
-                onMouseEnter={this.mouseEnterImage}
-                onMouseLeave={this.mouseLeaveImage}
-                onClick={this.handleSelect}
-              />
-          </div>
-        </div>
-        <div style={{ backgroundImage: this.state.opacityRight, width: '15%' }}>
-          <div
-            style={{ backgroundColor: 'transparent', width: '100%', height: '100%', display: 'flex' }}
-            onMouseEnter={this.mouseEnterRight}
-            onMouseLeave={this.mouseLeaveRight}
-          >
-            <SvgIcon style={{ justifyContent: 'center', margin: 'auto', color: '#d3d3d3' }} size={40} icon={arrowCircleRight} />
-          </div>
-        </div>
+  modalSelect(index) {
+    if (index === 0) {
+      return (
         <Modal
           show={this.state.show}
           onHide={() => this.setState({ show: !this.state.show })}
@@ -103,21 +88,9 @@ class Projects extends Component {
           <Modal.Body>
             <div style={{ display: 'flex', flexDirection: 'row' }}>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'row' }}>
-                <button
-                  style={{ backgroundColor: 'transparent', border: 'none', margin: 0, padding: 0 }}
-                  onClick={this.modalSelectLeft}
-                >
-                  <SvgIcon style={{ justifyContent: 'center', marginRight: 5, color: '#d3d3d3' }} size={40} icon={arrowCircleLeft} />
-                </button>
                 <img
-                  style={{ width: '65%', margin: 'auto' }} alt="150x200" src="https://github.com/mazairaj/oneFifty/raw/master/assets/image/ranking.png"
+                  style={{ width: '60%', margin: 'auto' }} alt="150x200" src="https://media.giphy.com/media/ggmlxltx7mM7K/giphy.gif"
                 />
-                <button
-                  style={{ backgroundColor: 'transparent', border: 'none', margin: 0, padding: 0 }}
-                  onClick={this.modalSelectRight}
-                >
-                  <SvgIcon style={{ justifyContent: 'center', marginLeft: 5, marginRight: 5, color: '#d3d3d3' }} size={40} icon={arrowCircleRight} />
-                </button>
               </div>
               <div style={{ flex: 1, display: 'flex', flexDirection: 'column', margin: 'auto' }}>
                 <div style={{ display: 'flex', flexDirection: 'column', margin: 'auto' }}>
@@ -133,11 +106,20 @@ class Projects extends Component {
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', marginRight: 3 }}>React Native</h4>
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Redux</h4>
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>MongoDB</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>S3</h4>
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Google Sheets API</h4>
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Calendar</h4>
                     <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Image Processing</h4>
                   </div>
-                  <button style={{ border: '2px solid #DCE8FF', backgroundColor: 'transparent', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', width: '100%' }}>Launch Demo</button>
+                  <a
+                    href="https://github.com/mazairaj/oneFifty"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <button style={{ border: '2px solid #DCE8FF', backgroundColor: 'transparent', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', width: '100%' }}>
+                    Launch Demo
+                    </button>
+                  </a>
                 </div>
               </div>
             </div>
@@ -146,6 +128,160 @@ class Projects extends Component {
             <Button onClick={this.close}>Close</Button>
           </Modal.Footer>
         </Modal>
+      );
+    } else if (index === 1) {
+      return (
+        <Modal
+          show={this.state.show}
+          onHide={() => this.setState({ show: !this.state.show })}
+          bsSize="large" aria-labelledby="contained-modal-title-lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-lg">Lilitofu React Web App</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <img
+                  style={{ height: 'auto', width: 300, margin: 'auto', marginBottom: 15 }} alt="300x200" src="https://lh3.google.com/u/0/d/0B17WtuksYOC8clVZMUxlMHJvRVk=w1239-h634-iv1"
+                />
+                <img
+                  style={{ height: 'auto', width: 300, margin: 'auto' }} alt="300x200" src="https://lh3.google.com/u/0/d/0B17WtuksYOC8bndtcWh1Y2xBRFE=w1239-h634-iv1"
+                />
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', margin: 'auto' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', margin: 'auto' }}>
+                  <p>Lilitofu is for the World Explorer in you. For your inner tree-hugger,
+                   inner child, inner warrior. For the creative you dressed
+                    in a monotone suit. Or tattered jeans. For the inner you
+                     who is not fond of conventions and longed for freedom.</p>
+                  <p>Calling out to all alternative travelers: craft your next experience with
+                   Lilitofu. Share your stories. Inspire others. Let that inner you emerge.</p>
+                  <p>Because the ones who are crazy enough to go to ends of the world are the ones
+                      who will truly Live Life To the Fullest!</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap' }} >
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', marginRight: 3 }}>React</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Redux</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>AWS</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Docker</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>WebPack</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Algolia</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Machine Learning Integration</h4>
+                  </div>
+                  <a
+                    href="https://lilitofu.com/"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <button style={{ border: '2px solid #DCE8FF', backgroundColor: 'transparent', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', width: '100%' }}>
+                      Launch Demo
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      );
+    } else if (index === 2) {
+      return (
+        <Modal
+          show={this.state.show}
+          onHide={() => this.setState({ show: !this.state.show })}
+          bsSize="large" aria-labelledby="contained-modal-title-lg"
+        >
+          <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-lg">Event Sharing Based Social Media Mobile App</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <img
+                  style={{ height: 'auto', width: '65%', margin: 'auto', marginBottom: 15 }} alt="300x200" src="https://github.com/mazairaj/BetaVuew/raw/master/images/ActivityTitlePage.png"
+                />
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', margin: 'auto' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', margin: 'auto' }}>
+                  <p>Social Media Application that help users discover the unique
+                   activities going on around them. Users are given access
+                   to a main feed that contains all of the currently active events
+                    across multiple categories. Users can also connect based on
+                     unique interests.</p>
+                  <p>Cool Features Include:<br />
+                    - Swipeable screen views<br />
+                    - Live Messaging and Notifications<br />
+                    - Well designed profile page layout<br />
+                    - Facebook Login</p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap' }} >
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', marginRight: 3 }}>React Native</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Redux</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>S3</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Facebook Authentication</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>MongoDB</h4>
+                    <h4 style={{ border: '2px solid #DCE8FF', color: '#BEC7E8', padding: 10, borderRadius: 2, marginRight: 3 }}>Google Maps API</h4>
+                  </div>
+                  <a
+                    href="https://github.com/mazairaj/BetaVuew"
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <button style={{ border: '2px solid #DCE8FF', backgroundColor: 'transparent', color: '#BEC7E8', padding: 10, borderRadius: 2, textAllign: 'center', width: '100%' }}>
+                      Launch Demo
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={this.close}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+      )
+    }
+    return <h1>No Modal</h1>;
+  }
+
+  render() {
+    const img = `${this.state.images[this.state.index]}`;
+    return (
+      <div style={{ height: '100%', display: 'flex', flexDirection: 'row', backgroundColor: 'white' }}>
+        <div style={{ backgroundImage: this.state.opacityLeft, width: '15%' }}>
+          <div
+            style={{ backgroundColor: 'transparent', width: '100%', height: '100%', display: 'flex' }}
+            onMouseEnter={this.mouseEnterLeft}
+            onMouseLeave={this.mouseLeaveLeft}
+            onClick={this.mouseClickLeft}
+          >
+            <SvgIcon style={{ justifyContent: 'center', margin: 'auto', color: '#d3d3d3' }} size={40} icon={arrowCircleLeft} />
+          </div>
+        </div>
+        <div
+          style={{ display: 'flex', flexDirection: 'column', width: '70%' }}
+        >
+          <div style={{ margin: 'auto' }}>
+              <img
+                style={{ opacity: this.state.imageOpacity, display: 'block', margin: 'auto' }} alt="250x400" src={this.state.images[this.state.index]}
+                onMouseEnter={this.mouseEnterImage}
+                onMouseLeave={this.mouseLeaveImage}
+                onClick={this.handleSelect}
+              />
+          </div>
+        </div>
+        <div style={{ backgroundImage: this.state.opacityRight, width: '15%' }}>
+          <div
+            style={{ backgroundColor: 'transparent', width: '100%', height: '100%', display: 'flex' }}
+            onMouseEnter={this.mouseEnterRight}
+            onMouseLeave={this.mouseLeaveRight}
+            onClick={this.mouseClickRight}
+          >
+            <SvgIcon style={{ justifyContent: 'center', margin: 'auto', color: '#d3d3d3' }} size={40} icon={arrowCircleRight} />
+          </div>
+        </div>
+        {this.modalSelect(this.state.index)}
       </div>
     );
   }
